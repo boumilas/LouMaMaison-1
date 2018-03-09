@@ -11,7 +11,7 @@
 <div class="container ajoutImg">	
 	<form <?= (isset($data['idApt'])) ? 'id="uploadimage"' : 'id="uploadimageProfil"' ?> action="" method="post" enctype="multipart/form-data">
 		<div class="panel panel-image">
-			<div class="panel-header text-center">Ajouter des images à mon logement</div>
+			<div class="panel-header text-center"><?= (isset($data['idApt'])) ? 'Ajouter des images à mon logement' : 'Ajouter une image à mon profil' ?></div>
 				<div class="panel-body pb-0">
 		<?php	if(isset($data['idApt'])) { ?>
 				<h4 class="text-center mb-3">Veuillez choisir l'une des options suivantes:</h4>

@@ -42,12 +42,14 @@
                     case "filtrer":
                         if(isset($params['arrivee']) && !empty($params['arrivee']))
                         {
-                            setcookie("arrivee", $params['arrivee']);
+                            $_SESSION["arrivee"]= $params['arrivee'];
                         }
+
                         if(isset($params['depart']) && !empty($params['depart']))
                         {
-                            setcookie("depart", $params['depart']);
+                           $_SESSION["depart"] = $params['depart'];
                         }
+
                         // numero de la page actuelle
                         $numPage = isset($params['page']) && is_numeric($params['page'])? $params['page'] : 1;
                     
@@ -127,13 +129,13 @@
                             $modeleUsagers = $this->getDAO("Usagers");
                             $data['proprietaire'] = $modeleUsagers->obtenir_par_id($data['appartement']->getId_userProprio());
                             
-                            if (isset($_COOKIE['arrivee'])) 
+                            if (isset($_SESSION['arrivee'])) 
                             {
-                                $data['arrivee'] = $_COOKIE['arrivee'];
+                                $data['arrivee'] = $_SESSION['arrivee'];
                             }
-                            if (isset($_COOKIE['depart'])) 
+                            if (isset($_SESSION['depart'])) 
                             {
-                                $data['depart'] = $_COOKIE['depart'];
+                                $data['depart'] = $_SESSION['depart'];
                             }
                             
                             // Affichage du detail d'un appartement
@@ -1043,7 +1045,7 @@
             $data['tab_quartier'] = $modeleApts->getQuartiers();
             $data['tab_typeApt'] = $modeleApts->getTypesApt();
             // affichage du formulaire d'inscription d'un appartement avec tableau de data rempli
-            $this->afficheVue("afficheInscriptionApt", $data);
+            $this->afficheVue("AfficheInscriptionApt", $data);
         }
 
         /**

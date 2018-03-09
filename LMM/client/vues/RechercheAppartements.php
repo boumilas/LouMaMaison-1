@@ -83,7 +83,13 @@
                 </select>
                 </div>
               </div>
-                <input type="hidden" name="note" id="laNote" value="" class="form-check-input">
+                <div class="form-group ml-2">
+                        <label for="appartParPage" class="form-control-label my-1 mr-sm-2 ">Nombre de resultat par page</label>
+                        <div class="row">
+                              <input type="number" min="0" name="appartParPage" class="col-sm-12 form-control pl-2" id="appartParPage">
+                       </div>
+                </div>
+                <input type="hidden" name="note" id="laNote" value="" class="form-check-input pl-2">
               <!-- Notes -->
                 <div class="py-3">
                     <div class="rateyo-readonly-widg"></div>

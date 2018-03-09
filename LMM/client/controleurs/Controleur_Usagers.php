@@ -394,7 +394,7 @@
 						$data['communication'] = $modeleUsagers->getModeCommunication();
 						if($data) {
                             $this->afficheVue("header", $data);
-							$this->afficheVue("afficheInscriptionUsager", $data);
+							$this->afficheVue("AfficheInscriptionUsager", $data);
                             $this->afficheVue('footer');
 						}
 						break;
@@ -418,7 +418,7 @@
 							if(isset($params['photo'])) {
 							// ajout d'insertion d'une photo (src) à faire... + upload de l'image
 							} else {
-								$photo = "./images/profil.jpg";
+								$photo = "./images/profil_usager.png";
 							}
 
 							// validation des champs input du formulaire d'inscription d'un usager
@@ -552,7 +552,7 @@
 			if($data) {
 				// affichage du formulaire d'inscription avec tout le data
 				$this->afficheVue("header", $data);	
-				$this->afficheVue("afficheInscriptionUsager", $data);		
+				$this->afficheVue("AfficheInscriptionUsager", $data);		
 			}
 		}
         
