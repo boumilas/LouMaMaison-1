@@ -49,7 +49,7 @@
 					case "Déconnexion":
                         session_destroy();
                             // redirection vers la page d'accueil
-                            echo "<script>window.location='./index.php?Appartements'</script>";
+                            header("location:./index.php?Appartements");
 						break;
 
 					// case d'authetification d'un usager	
