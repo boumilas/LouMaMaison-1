@@ -44,7 +44,10 @@
                 <div id="photoProfilUsager" class="col-md-5">
 
                     <div id="photo"> <img src="<?=$data["usager"]->getPhoto() ?>" class="aptPhotoProprio rounded-circle img-fluid img"> </div>
-                    <h5><?=$data["usager"]->getNom() ?> <?=$data["usager"]->getPrenom() ?>&nbsp; <small>&#64;<?=$data["usager"]->getUsername();?></small></h5>
+                    <input type="hidden" name="idUser" value="<?=$_SESSION["username"]?>">
+					<h5 id="userNom">		
+						<?=$data["usager"]->getUsername();?>
+					</h5>
                 </div>
 				<!--On affiche nom d'usager pour les gens pas connectés ou bannis ou non activés, ainsi que
 					pour les connectés; 
@@ -258,7 +261,7 @@
                                         <div class="row">
                                             <div id="selectImage" class="col-md-8">
                                                 <div id="ajoutImage text-left">
-                                                    <label id="inputFile"><input type="file" name="file[]" id="file" required /></label>
+                                                    <label id="" class="btn btn-primary btn-sm"> Sélectionner<input type="file" name="file[]" id="file" required /></label>
                                                 </div>
                                                 <input type="hidden" name="action" value="ajouterPhoto" required />
                                             </div>
@@ -327,8 +330,6 @@
 
  <!-- Les gens connectes -->           
         <?php 
-
-
         if(isset($_SESSION["username"]) && $_SESSION["isActiv"] == 0 && $_SESSION["isBanned"] == 0) 
         {
         ?>
@@ -349,7 +350,6 @@
 						</p>
         <?php
         }
-
             if(isset($_SESSION["username"]) && $_SESSION["isActiv"] == 1 && $_SESSION["isBanned"] == 0) 
             {
         ?>
@@ -381,10 +381,8 @@
 				
                 <!-- Le proprio du profil peux le voir avec toute l'info et Admin et SuperAdmin aussi (connectes, actives, pas bannis)-->  
                 <?php
-
                 if(isset($_SESSION["username"])) 
                 {
-
                     if((in_array(1,$_SESSION["role"]) && $_SESSION["isActiv"] ==1 || in_array(2,$_SESSION["role"]) && $_SESSION["isActiv"] ==1 && $_SESSION["isBanned"] ==0) || ($_SESSION["username"] == $_REQUEST["idUsager"] && $_SESSION["isBanned"] ==0))  
                     {
                     ?>

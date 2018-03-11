@@ -148,7 +148,6 @@ $(document).ready(function() {
         // serialisation de tous les inputs et ajout de la 'string' serialisee au formulaire (input hidden) 
         var options = $("#formApt input[type='checkbox']" ).serialize();
         var valeurOptions = $('#optionsSerialises').val(options);
-        console.log(options);
     });
 
     /**
@@ -231,8 +230,8 @@ $(document).ready(function() {
     */
     $(document).on('click', '.btnSuppressionApt', function(e) {
 
-       /* console.log(e.target);
-        var idApt = e.target.attributes[0].nodeValue;*/
+
+        var idApt = e.target.attributes[0].nodeValue;
         var idApt = e.currentTarget.id;
         var idUser = $('#nomHote')[0].attributes[1].nodeValue
       
@@ -418,10 +417,14 @@ $(document).ready(function() {
         var divButton = divImg.appendChild(button);     */
         var hr = document.createElement('hr');
             divPrincipale.appendChild(hr);
+        var label = addElement("label", ["btn", "btn-primary", "inputFile"]);
+        var divLabel = divPrincipale.appendChild(label);
+        var labelTexte = addText(label, 'Sélectionner une image');
+          
         // creation de l'input de type file      
         var input = addElement("input", ["file"]);
-            setAttributes(input, { "type" : "file", "name" : "file[]", "id" :  tabFiles.length });
-        var divInput = divPrincipale.appendChild(input); 
+            setAttributes(input, { "type" : "file", "name" : "file[]", "id" :  tabFiles.length }); 
+        var divInput = divLabel.appendChild(input); 
         // appel de la fonction qui affichera
         ajouterNouvelleImage(tabFiles.length);
     }));
@@ -470,7 +473,7 @@ $(document).ready(function() {
                 if(flag) {
                     tabFiles.push(this.files[0]);
                 }
-                console.log(tabFiles);
+
             }
         });
         function imageIsLoaded(e) {
@@ -515,7 +518,6 @@ $(document).ready(function() {
                 }
                 // affichage du nom de l'image 
                 $('#image_preview small').text(nomFile);
-                console.log(tabFiles);
             }
         });
         function imageIsLoaded(e) {
